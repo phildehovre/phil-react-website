@@ -8,7 +8,7 @@ import {useEffect, useState} from 'react'
 
 function SongList(props) {
 
-    const BPM_API_KEY = '93f2be180a4be75f06c1a7d2829e8bbc'
+    const BPM_API_KEY = '59d26b50dd52ee5de04287f8a5837b8f'
     const { bpm, showSongs, listSize} = props
 
  const [songs, setSongs] = useState([])

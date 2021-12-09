@@ -181,6 +181,7 @@ const Metronome = ({showSongs, setShowSongs}) => {
               /> */}
               <input type='range' min='0' max='50' onChange={e => setListSize(e.target.value)}/>
               <div>{listSize}</div>
+              <div>Powered by GetSongBpm.com</div>
         </div>
     )
 }
