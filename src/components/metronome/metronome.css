@@ -1,0 +1,501 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+    --test-border: 1px solid black;
+    --primary: #81A1BC;
+    --secondary: #ABC0D2;
+    --ternary: #D5E0E9;
+    --primary-overlay: rgba(129, 161, 188, 0.75)
+}
+
+.metro-left {
+    height: 100%;
+    width: 100%
+}
+
+.metro-right {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    min-height: 750px;
+    transition: linear 250ms
+}
+
+.metro-right.showsongs {
+  /* border: 1px solid red; */
+  transform: translateX(10%);
+  transition: linear 250ms
+}
+
+.metronome {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+    background-color: #81A1BC;
+    width: 60%;
+    border-radius: 26px;
+    box-shadow: var(--ternary) 15px 15px 1px;
+    min-width: 400px;
+}
+
+.metro-display {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 1fr 20%;
+    border-radius: 16px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary);
+    height: 4em;
+}
+
+
+.metro-display.bpm {
+    display: flex;  
+    border: none;
+    height: 100%;
+    font-size: 2em;
+    width: 100%;
+}
+
+
+.metro-btn.decrement {
+  border-radius: 16px  0  0 16px;
+}
+.metro-btn.decrement:hover {
+  background-color: white;
+  color: var(--primary)
+}
+.metro-btn.increment {
+  border-radius: 0px  16px  16px 0px;
+}
+.metro-btn.increment:hover {
+  background-color: white;
+  color: var(--primary)
+}
+
+.metro-display > .metro-btn {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 2.5em;
+  justify-self: center;
+  padding: .1em;
+  transition: ease-in 150ms
+}
+
+.metro-display > .metro-btn:hover {
+  background-color: white;
+}
+
+
+input[type=range] {
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    width: 100%; /* Specific width is required for Firefox. */
+    background: transparent; /* Otherwise white in Chrome */
+  }
+  
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  }
+  
+  input[type=range]:focus {
+    outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+  }
+  
+  input[type=range]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+  
+    /* Hides the slider so custom styles can be added */
+    background: transparent; 
+    border-color: transparent;
+    color: transparent;
+  }
+
+/* =============================================================================== Range styling ==================================================================== */
+
+  input[type=range] {
+    -webkit-appearance: none;
+    margin: 18px 0;
+    width: 100%;
+  }
+  input[type=range]:focus {
+    outline: none;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+      width: 90%;
+      height: 8.4px;
+      cursor: pointer;
+      background: var(--secondary);
+      border-radius: 1.3px;
+    }
+    input[type=range]::-webkit-slider-thumb {
+        height: 2em;
+        width: 2em;
+        border-radius: 30px;
+        background: #ffffff;
+        cursor: pointer;
+        -webkit-appearance: none;
+        margin-top: -9px;
+    }
+    input[type=range]::-moz-range-track {
+    height: 8.4px;
+    width: 80%;
+    cursor: pointer;
+    background: #3071a9;
+    border-radius: 1.3px;
+  }
+  input[type=range]::-moz-range-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+  }
+  input[type=range]::-ms-track {
+    width: 80%;
+    height: 8.4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+  }
+  input[type=range]::-ms-fill-lower {
+    background: #2a6495;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  input[type=range]::-ms-fill-upper {
+    background: #3071a9;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  }
+  input[type=range]::-ms-thumb {
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    border: 1px solid #000000;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: #ffffff;
+    cursor: pointer;
+  }
+  input[type=range]:focus::-ms-fill-lower {
+    background: #3071a9;
+  }
+  input[type=range]:focus::-ms-fill-upper {
+    background: #367ebd;
+  }
+
+  /* =============================================================================== Range styling ==================================================================== */
+
+
+.noSelect {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.noSelect:focus {
+    outline: none !important;
+}
+
+.metro-controls {
+    display: flex;
+    flex-direction:column;
+    width: 100%;
+    align-items:center;
+    position: relative;
+    padding: 1em 0 0 0 
+  }
+
+.metro-btn {
+    cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.play {
+    box-sizing: content-box;
+    z-index: 10;
+    border: .7em solid var(--primary);
+    height: 12em;
+    width: 12em;
+    background-color: var(--ternary);
+    border-radius: 250px;
+    position: relative;
+    transition: ease-in 150ms;
+    margin-bottom: 4em;
+}
+
+.play:hover {
+    background-color: white;
+    
+}
+
+.play:after {
+    content: '';
+    height: 50%;
+    width: 45%;
+    position: absolute;
+    top: 25%;
+    left: 35%;
+    background-image: url('../../assets/playicon.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    }
+    
+  .metro-btn-tap {
+    height: 35%;
+    width: 35%;
+    border: none;
+    background-color: var(--ternary);
+    border-radius: 25px;
+    position: absolute;
+    top: 20%;
+    right: 0%;
+    z-index: 9;
+    color: white;
+    transition: ease-in 150ms;
+    cursor: pointer
+  }
+  .metro-btn-tap:after {
+    content: '';
+    /* width: 2em;
+    height: 2em; */
+    width: 25%;
+    height: 2em;
+    position: absolute;
+    border: 5px solid var(--primary);
+    border-radius: 50%;
+    top: 37.5%;
+    right: 20%
+  }
+  
+  .metro-btn-tap:before {
+    content: '';
+    width: 12.5%;
+    height: 1em;
+    position: absolute;
+    top: 44%;
+    right: 26%;
+    border: 5px solid var(--primary);
+    border-radius: 50%;
+    transition: ease-in 250ms transform
+  }
+  
+  
+  .metro-btn-tap:hover {
+    background-color: white;
+    transform: scale(1.05)
+  }
+  
+  .metro-btn-generate {
+    height: 35%;
+    width: 35%;
+    border: none;
+    background-color: var(--ternary);
+    border-radius: 25px;
+    position: absolute;
+    top: 20%;
+    left: 0%;
+    z-index: 9;
+    color: white;
+    transition: ease-in 150ms;
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  .metro-btn-generate:after {
+    content: '';
+    width: 2em;
+    height: .85em;
+    position: absolute;
+    border-top: 5px solid var(--primary);
+    border-bottom: 5px solid var(--primary);
+    top: 48%;
+    left: 20%
+  }
+  
+  .metro-btn-generate:before {
+    content: '';
+    width: 2em;
+    height: .5em;
+    position: absolute;
+    top: 38%;
+    left: 20%;
+    border-bottom: 5px solid var(--primary)
+  }
+  
+  .metro-btn-generate:hover {
+    opacity: 100%;
+    background-color: white;
+    transform: scale(1.05);
+  }
+
+  .listsize.closed {
+    display: none;
+    transition: ease-in 250ms;
+    opacity: 0%;
+    position: absolute;
+    background-color: var(--secondary);
+    z-index: -10;
+    transition: ease-in 250ms;
+    /* transform: translateY(-100%) */
+  }
+  
+  .listsize.open {
+    position: absolute;
+    background-color: var(--secondary);
+    z-index: -10;
+    transition: ease-in 250ms;
+    opacity: 100%;
+    top: calc(90%);
+    border-radius: 0 0 26px 26px;
+    transform: translateY(5%)
+  }
+  
+  
+.pause {
+  box-sizing: content-box;
+  z-index: 10;
+  border: .7em solid var(--primary);
+  height: 12em;
+  width: 12em;
+  background-color: var(--ternary);
+  border-radius: 250px;
+  position: relative;
+  color: white;
+  margin-bottom: 4em
+}
+  
+.pause:after {
+  content: '';
+  height: 55%;
+  width: 40%;
+  position: absolute;
+  top: 25%;
+  left: 30%;
+  background-image: url('../../assets/pauseicon-final.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.pause:hover {
+    background-color: white;
+}
+
+/*============================================= Dropdown Styling ======================================= */
+
+.metro-dropdown-header {
+  padding: 1em;
+  background-color: var(--secondary);
+  border-radius: 26px;
+  width: 100%;
+  transition: ease-in 150ms;
+  cursor: pointer
+}
+
+.metro-dropdown-header:hover {
+  background-color: var(--ternary);
+}
+
+.metro-dropdown {
+  transition:cubic-bezier(1, 0, 0, 1) 250ms;
+  position: relative;
+  width: 100%;
+  /* padding: 1em; */
+}
+
+.metro-dropdown-open {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transition: ease-in 100ms;
+  /* padding: .5em */
+}
+
+.metro-dropdown-closed {
+  transition: ease-in 100ms;
+  transform: translateY(45%);
+  border: 1px solid red
+}
+
+.metro-dropdown-item {
+  transition: ease-in 150ms;
+  padding: 1em;
+  background-color: var(--secondary);
+  border-radius: 26px;
+  width: 100%;
+  margin: .5em 0
+}
+
+.metro-dropdown-item:hover {
+  background-color: var(--ternary);
+}
+
+/* ==========================Song list styling =================================== */
+
+.metro-songlist.closed {
+  transition: ease-in 250ms;
+  transform: translateX(-500%)
+}
+
+.metro-songlist.open {
+  position: absolute;
+  right: 75%;
+  top: 5%;
+  transform: translateX(0%);
+  transition: ease 450ms;
+  border-radius: 26px;
+  /* background-color: var(--secondary); */
+  width: 60vw;
+  z-index: -99;
+}
+
+.metro-songlist.open table {
+  border-collapse: collapse;
+  letter-spacing: normal;
+  font-size: smaller;
+}
+
+.metro-songlist.open td {
+  transition: ease-in 150ms;
+  cursor: pointer;
+}
+.metro-songlist.open tr:hover {
+  background-color: var(--ternary);
+}
+
+.metro-songlist.open td {
+  padding: .3em;
+  border: none;
+  height: 2em;
+}
+
+.metro-songlist .details {
+  width: 1%;
+  white-space: nowrap;
+  /* max-width: 15%; */
+}
+
+.metro-songlist .index {
+  width: 0.2%;
+}
+

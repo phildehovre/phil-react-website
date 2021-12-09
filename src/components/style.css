@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+*, *:before, *:after {
+    box-sizing: border-box;
+    --test-border: 1px solid black;
+    --primary-: #81A1BC;
+    --secondary: #ABC0D2;
+    --ternary: #D5E0E9;
+    --primary-overlay: rgba(129, 161, 188, 0.75)
+}
+
+:root {
+    font-family: 'roboto', sans-serif;
+    letter-spacing: .15em;
+}
+
+.navbar {
+    width: 100vw;
+    display: flex;
+    text-align: center;
+    font-size: 1em;
+}
+
+.button {
+    text-decoration: none;
+    padding: 1em;
+    color: rgb(97, 97, 97);
+    text-align: center;
+}
+
+.hero {
+    height: 100vh;
+    background-color: var(--primary-overlay);
+    position: relative;
+    /* width: 100vw */
+}
+
+
+
+.headline-container {
+    padding: 5em;
+    font-size: 1em;;
+    /* max-width: 100%; */
+}
+
+.headline-subtitle {
+    font-size: 0.8em;
+    margin-bottom: -2em;
+}
+
+.headline-cta {
+    color: white;
+    display: flex;
+    background-color: #EB5757;
+    border-radius: 2em;
+    padding: 0em 1.5em;
+    font-size: 0.75em;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+}
+
+.headline-cta-logo {
+    
+    top: .5em;
+    height: 1.5em;
+    width: 1.5em;
+    color: white;
+    background-image: url('../assets/magnifyingglass.png');
+    background-repeat: no-repeat;
+    background-size: 80%;
+    /* border: var(--test-border) */
+}
+
+.about-container {
+    width: 100vw;
+    height: 100vh;
+}
+
+.about-left, .about-right {
+    margin:2em;
+    background-color: var(--primary-) ;
+}
+
+@media (min-width: 750px) {
+    .hero {
+      display: grid;
+      /* grid-template-columns: minmax(200px, 600px) 1fr; */
+      grid-template-columns: repeat(2, 1fr);
+      background: url('../assets/hero.jpg') no-repeat center left/cover;
+      background-attachment: fixed ;
+    }
+
+    .headline-container {
+        font-size: 1.75em;
+
+    }
+
+    .about-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1em;
+    }
+
+    .metro-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        grid-template-rows: minmax(200px, 700px);;
+        gap: 1em;
+        padding: 2em;
+    }
+
+  }
