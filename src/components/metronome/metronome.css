@@ -470,6 +470,7 @@ input[type=range] {
 }
 
 .metro-songlist.open table {
+  table-layout: auto;
   border-collapse: collapse;
   letter-spacing: normal;
   font-size: smaller;
@@ -493,6 +494,12 @@ input[type=range] {
   width: 1%;
   white-space: nowrap;
   /* max-width: 15%; */
+  width: 0.1vw
+}
+
+.details.genres{
+  white-space: nowrap;
+  border: 1px solid red
 }
 
 .metro-songlist .index {

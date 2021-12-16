@@ -8,7 +8,8 @@ import {useEffect, useState} from 'react'
 
 function SongList(props) {
 
-    const BPM_API_KEY = '59d26b50dd52ee5de04287f8a5837b8f'
+    // const BPM_API_KEY = '59d26b50dd52ee5de04287f8a5837b8f'
+    const BPM_API_KEY = 'process.env.BPM_API_KEY'
     const { bpm, showSongs, listSize} = props
 
  const [songs, setSongs] = useState([])
@@ -98,7 +99,7 @@ function SongList(props) {
                 <td className='details'>{checkLength(song.artist.name)}</td>
                 <td className='details'>{checkLength(song.album.title)}</td>
                 <td className='details'>{song.album.year}</td>
-                <td className='details'>{renderGenres()}</td>
+                <td className='details genres'>{renderGenres()}</td>
               </tr>
             )
           })

@@ -102,7 +102,8 @@ const Metronome = ({showSongs, setShowSongs}) => {
         setTempoInterval((60/bpm)*1000);
         if (bpm <= 40) {
           setBpm(40)
-        } else if (bpm > 220) {
+        } 
+        if (bpm > 220) {
           setBpm(220)
         }
         const intervalId = setTimeout(() => {
