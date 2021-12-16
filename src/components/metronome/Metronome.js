@@ -23,7 +23,7 @@ const Metronome = ({showSongs, setShowSongs}) => {
     const [soundEffect, setSoundEffect] = useState('sidestick')
     const [debouncedBpm, setDebouncedBpm] = useState(bpm)
     const [dropdownOpen, setDropdownOpen] = useState(false)
-    const [showListSizeSelector, setShowListSizeSelector] = useState(false)
+    // const [showListSizeSelector, setShowListSizeSelector] = useState(false)
     const [searchTerm, setSearchTerm] = useState('Search')
     const [listSize, setListSize] = useState(25)
 
@@ -122,9 +122,9 @@ const Metronome = ({showSongs, setShowSongs}) => {
       setShowSongs(!showSongs)
     }
 
-    const renderListSizeSelector = (bool) => {
-      setShowListSizeSelector(bool)
-    }
+    // const renderListSizeSelector = (bool) => {
+    //   setShowListSizeSelector(bool)
+    // }
 
     const handleSearch = (searchTerm) => {
       console.log(searchTerm)
@@ -147,10 +147,10 @@ const Metronome = ({showSongs, setShowSongs}) => {
             <div 
               className="metro-btn-generate"
               onClick={e => generateSongs()} 
-              onMouseEnter={e => renderListSizeSelector(true)}
-              onMouseLeave={e => renderListSizeSelector(false)}
+              // onMouseEnter={e => renderListSizeSelector(true)}
+              // onMouseLeave={e => renderListSizeSelector(false)}
               >
-                <div className={`listsize ${showListSizeSelector? `open`: `closed`}`}>amount showing</div>
+                {/* <div className={`listsize ${showListSizeSelector? `open`: `closed`}`}>amount showing</div> */}
               </div>
 
             <div onClick={tapTempo} className="metro-btn-tap">Tap!</div>
