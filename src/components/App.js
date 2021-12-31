@@ -4,7 +4,7 @@ import {BrowserRouter} from 'react-router-dom'
 import Metronome from './metronome/Metronome'
 
 
-import {bio} from '../assets/about'
+// import {bio} from '../assets/about'
 import './style.css'
 
 function App() {
