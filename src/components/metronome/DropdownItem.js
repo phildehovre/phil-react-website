@@ -12,7 +12,7 @@ const DropdownItem = (props) => {
     }
 
     return (
-      <div className="metro-dropdown-item" onClick={e => handleClick(e)}>{sound}</div>
+      <div className="metro-dropdown-item" onClick={handleClick}>{sound}</div>
     )
   }
 

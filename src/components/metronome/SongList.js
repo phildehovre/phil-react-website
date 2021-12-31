@@ -18,7 +18,6 @@ function SongList(props) {
 
  useEffect(() => {
      (async () => {
-         console.log('fetching')
          const KEY = BPM_API_KEY
          const res = await axios.get(`https://api.getsongbpm.com/tempo/?api_key=${KEY}&bpm=${bpm}`)
          if (res) {

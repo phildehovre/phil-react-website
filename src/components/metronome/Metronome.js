@@ -19,21 +19,18 @@ const Metronome = ({showSongs, setShowSongs}) => {
     const [bpm, setBpm] = useState(120)
     const [tempoInterval, setTempoInterval] = useState(null)
     const [tapped, setTapped] = useState()
-    // const [light, setLight] = useState(undefined)
     const [soundEffect, setSoundEffect] = useState('sidestick')
     const [debouncedBpm, setDebouncedBpm] = useState(bpm)
     const [dropdownOpen, setDropdownOpen] = useState(false)
-    // const [showListSizeSelector, setShowListSizeSelector] = useState(false)
     const [searchTerm, setSearchTerm] = useState('Search')
     const [listSize, setListSize] = useState(25)
 
-    // const [showSongs, setShowSongs] = useState(false)
 
     const [cowbell] = useSound(Cowbell)
     const [woodblock] = useSound(Woodblock)
     const [sidestick] = useSound(Sidestick)
 
-    // Tap Tempo Logic:
+    // ========================== Tap Tempo Logic:
 
     const tapTempo = () => {
       if (tapped) {
@@ -72,16 +69,6 @@ const Metronome = ({showSongs, setShowSongs}) => {
 
 
 
-
-    // const trigger = (duration) => {
-    //   if (play) {
-    //     playSound()
-    //     setLight(!true)
-    //     setTimeout(() => {setLight(!false)}, duration/2)
-    //   } else {
-    //     return;
-    //   }
-    // }
     
     const startClick = () => {
       setPlay(!play)      
@@ -103,7 +90,7 @@ const Metronome = ({showSongs, setShowSongs}) => {
         if (bpm <= 40) {
           setBpm(40)
         } 
-        if (bpm > 220) {
+        if (bpm >= 220) {
           setBpm(220)
         }
         const intervalId = setTimeout(() => {
@@ -111,9 +98,9 @@ const Metronome = ({showSongs, setShowSongs}) => {
             }, 500);
         return (() => {
             (clearTimeout(intervalId))
-            console.log('cleared')
         })
     }, [bpm])
+    
         
 
     // ========================== Song list Logic ===============================
@@ -130,16 +117,21 @@ const Metronome = ({showSongs, setShowSongs}) => {
       console.log(searchTerm)
     }
 
+    const increment = () => {
+      setBpm(Number(bpm) + 1)
+    }
+    const decrement = () => {
+      setBpm(Number(bpm) - 1)
+    }
 
 
     return (
         <div className='metronome'>
             <h1>Metronome</h1>
             <div className="metro-display">
-                <div className="metro-btn decrement" onClick={e => setBpm(bpm - 1)}>-</div>
+                <div className="metro-btn decrement" onClick={decrement}>-</div>
                 <div className='metro-display bpm'>{bpm}</div>
-                {/* <input type="number" value={bpm} onChange={e => setBpm(e.target.value)}/> */}
-                <div  className="metro-btn increment" onClick={e => setBpm(bpm + 1)}>+</div>
+                <div  className="metro-btn increment" onClick={increment}>+</div>
             </div>
             <input type="range" min="40" max="220" value={bpm} onChange={e =>setBpm(e.target.value)}/>
             <div className="metro-controls">
@@ -147,27 +139,28 @@ const Metronome = ({showSongs, setShowSongs}) => {
             <div 
               className="metro-btn-generate"
               onClick={e => generateSongs()} 
-              // onMouseEnter={e => renderListSizeSelector(true)}
-              // onMouseLeave={e => renderListSizeSelector(false)}
               >
-                {/* <div className={`listsize ${showListSizeSelector? `open`: `closed`}`}>amount showing</div> */}
               </div>
 
-            <div onClick={tapTempo} className="metro-btn-tap">Tap!</div>
+            <div onClick={tapTempo} className="metro-btn-tap">
+              <div className="outer"></div>
+              <div className="inner"></div>
+            </div>
             <SearchBar 
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
               handleSearch={handleSearch}
               />
-            <div className='metro-dropdown-header' onClick={e => setDropdownOpen(!dropdownOpen)}>{soundEffect}</div>
+            <div className='metro-dropdown-header' onClick={e => setDropdownOpen(!dropdownOpen)}>{soundEffect}
+              <Dropdown 
+                open={dropdownOpen}
+                soundEffect={soundEffect}
+                setSoundEffect={setSoundEffect}
+                dropdownOpen={dropdownOpen}
+                setDropdownOpen={setDropdownOpen}
+                />
             </div>
-            <Dropdown 
-              open={dropdownOpen}
-              soundEffect={soundEffect}
-              setSoundEffect={setSoundEffect}
-              dropdownOpen={dropdownOpen}
-              setDropdownOpen={setDropdownOpen}
-              />
+            </div>
               <SongList 
                 bpm={debouncedBpm}
                 showSongs={showSongs}
@@ -175,14 +168,9 @@ const Metronome = ({showSongs, setShowSongs}) => {
                 listSize={listSize}
                 setListSize={setListSize}
               />
-              {/* <SongListRefactor
-                bpm={debouncedBpm}
-                showSongs={showSongs}
-                searchTerm={searchTerm}
-              /> */}
               <input type='range' min='0' max='50' onChange={e => setListSize(e.target.value)}/>
               <div>{listSize}</div>
-              <div>Powered by GetSongBpm.com</div>
+              <h6 style={{color: 'var(--secondary)'}}>Powered by GetSongBpm.com</h6>
         </div>
     )
 }

@@ -11,6 +11,17 @@
 :root {
     font-family: 'roboto', sans-serif;
     letter-spacing: .15em;
+    /* display: flex; */
+}
+
+html, body {
+    margin: 0; 
+    padding: 0;
+  }
+
+.main-container {
+    display: grid;
+    width: 100vw;
 }
 
 .navbar {
@@ -25,21 +36,27 @@
     padding: 1em;
     color: rgb(97, 97, 97);
     text-align: center;
+    cursor: pointer
 }
 
 .hero {
+    display: flex;
     height: 100vh;
     background-color: var(--primary-overlay);
-    position: relative;
-    /* width: 100vw */
+    background-image: url('../assets/josiah-gardner-ksi5l4iJBjM-unsplash.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+    background-attachment: fixed ;
+    width: 110%;
+    align-items: center;
 }
 
 
 
 .headline-container {
-    padding: 5em;
-    font-size: 1em;;
-    /* max-width: 100%; */
+    padding: 4em;
+    font-size: 1.5em;;
 }
 
 .headline-subtitle {
@@ -56,11 +73,13 @@
     font-size: 0.75em;
     justify-content: center;
     align-items: center;
-    width: 75%;
+    width: 15em;
+    height: 3em;
+    cursor: pointer;
+    text-align: center;
 }
 
 .headline-cta-logo {
-    
     top: .5em;
     height: 1.5em;
     width: 1.5em;
@@ -71,36 +90,72 @@
     /* border: var(--test-border) */
 }
 
+.headline-cta h2 {
+    /* border: 1px solid red; */
+    height: 100%;
+    width: 100%;
+    padding: .2em
+}
+
 .about-container {
-    width: 100vw;
+    letter-spacing: .060em;
+    width: 110%;
     height: 100vh;
 }
 
 .about-left, .about-right {
-    margin:2em;
-    background-color: var(--primary-) ;
+    padding: 2em;
+    line-height: 1.5em;
+    height: 100%;
+    /* width: 100% */
+}
+
+.about-left {
+    background-color: var(--primary-);
+}
+
+.about-right {
+    background-color: var(--ternary);
+}
+
+.metro-container {
+    height: 100%;
+    width: 100%;
+    margin-top: 3em;
+}
+
+.metronome {
+    /* border: 1px solid red; */
+    /* margin-top: 5em */
+    /* padding: 1em; */
 }
 
 @media (min-width: 750px) {
     .hero {
-      display: grid;
-      /* grid-template-columns: minmax(200px, 600px) 1fr; */
-      grid-template-columns: repeat(2, 1fr);
-      background: url('../assets/hero.jpg') no-repeat center left/cover;
-      background-attachment: fixed ;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        background: url('../assets/hero.jpg') no-repeat center left/cover;
+        background-attachment: fixed ;
     }
-
+    
     .headline-container {
         font-size: 1.75em;
-
     }
-
+    
     .about-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 1em;
+        padding: 2em;
+        justify-content: center;
+        text-align: justify;
     }
 
+    .about-container h1 {
+        border-bottom: 1px solid white;
+        padding-bottom: 1em;
+    }
+    
     .metro-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -111,5 +166,13 @@
         gap: 1em;
         padding: 2em;
     }
+    
+    .about-left, .about-right {
+        padding: 5em;
+        border-radius: 16px;
+    }
 
-  }
+    .about-left h1, .about-right h1 {
+        text-align: center;
+    }
+}
