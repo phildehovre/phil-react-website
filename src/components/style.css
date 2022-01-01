@@ -131,11 +131,21 @@ html, body {
 }
 
 @media (min-width: 750px) {
+
+    html, body {
+        width: 100vw
+    }
+
+    .main-container {
+        width: 100vw;
+    }
+
     .hero {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         background: url('../assets/hero.jpg') no-repeat center left/cover;
         background-attachment: fixed ;
+        width: 99vw
     }
     
     .headline-container {
@@ -149,6 +159,7 @@ html, body {
         padding: 2em;
         justify-content: center;
         text-align: justify;
+        width: 99vw;
     }
 
     .about-container h1 {
