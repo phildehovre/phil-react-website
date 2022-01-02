@@ -124,11 +124,7 @@ html, body {
     margin-top: 3em;
 }
 
-.metronome {
-    /* border: 1px solid red; */
-    /* margin-top: 5em */
-    /* padding: 1em; */
-}
+
 
 @media (min-width: 750px) {
 
@@ -161,7 +157,7 @@ html, body {
         text-align: justify;
         width: 99vw;
     }
-
+    
     .about-container h1 {
         border-bottom: 1px solid white;
         padding-bottom: 1em;
@@ -176,6 +172,8 @@ html, body {
         grid-template-rows: minmax(200px, 700px);;
         gap: 1em;
         padding: 2em;
+        /* text-align: justify; */
+        letter-spacing: 0.06em
     }
     
     .about-left, .about-right {
@@ -185,5 +183,20 @@ html, body {
 
     .about-left h1, .about-right h1 {
         text-align: center;
+    }
+
+    .metro-left {
+        /* text-align: justify; */
+        padding: 6em;
+        line-height: 1.5em;
+        height: 100%;
+        /* background-color: var(--ternary); */
+        border-radius: 16px;
+        color: var(--primary-)
+    }
+
+    .metro-left h1 {
+        text-align: center;
+        text-transform: uppercase;
     }
 }

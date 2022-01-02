@@ -135,7 +135,7 @@ const Metronome = ({showSongs, setShowSongs}) => {
             </div>
             <input type="range" min="40" max="220" value={bpm} onChange={e =>setBpm(e.target.value)}/>
             <div className="metro-controls">
-                    <div onClick={startClick} className={`metro-btn ${play? `pause`: `play`} noSelect`}></div>
+                    <div onClick={startClick} className={`metro-btn ${play? `pause`: `play`} noSelect`} id='metro-there'></div>
             <div 
               className="metro-btn-generate"
               onClick={e => generateSongs()} 

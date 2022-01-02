@@ -9,7 +9,6 @@ import {useEffect, useState} from 'react'
 function SongList(props) {
 
     const BPM_API_KEY = '59d26b50dd52ee5de04287f8a5837b8f'
-    // const BPM_API_KEY = 'process.env.BPM_API_KEY'
     const { bpm, showSongs, listSize} = props
 
  const [songs, setSongs] = useState([])
@@ -26,27 +25,14 @@ function SongList(props) {
            console.log('error')
          }
         })()
-      }, [showSongs, bpm, listSize])
+      }, [bpm])
       
       
       useEffect(() => {
         setSongs(rawList.slice(0, listSize))
       }, [rawList, listSize])
-      
-//  useEffect(() => {
-//    const prevSongs = songs
-//     if (searchTerm && searchTerm.length > 0) {
-//       const newSongs = rawList.filter(song => {
-//         return song.artist.name.slice(0, searchTerm.length).toLowerCase() === searchTerm
-//       })
-//       setSongs(newSongs)
-//     } else {
-//       setSongs(prevSongs)
-//     }
-//  }, [songs, searchTerm, rawList, listSize])
-
-
     
+
     const renderSongList = () => {
       if (songs.length === 0 && showSongs) {
         return (
@@ -59,7 +45,6 @@ function SongList(props) {
                 <tr>
                   <th>#</th>
                   <th>Title</th>
-                  {/* <SongListHeader header={'Title'} /> */}
                   <th>Artist </th>
                   <th>Album</th>
                   <th>Year</th>
@@ -106,9 +91,12 @@ function SongList(props) {
 
 
       return (
-        <div className={`metro-songlist ${showSongs?'open':'closed' }`}>
-            {renderSongList()}
-        </div>
+        <>
+          <div className={`metro-songlist ${showSongs?'open':'closed' }`}>
+              {renderSongList()}
+          </div>
+        
+        </>
     )
   }
   
