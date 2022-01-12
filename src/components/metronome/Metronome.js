@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import useSound from 'use-sound';
 
 import Dropdown from './Dropdown';
-import SearchBar from './SearchBar'
+// import SearchBar from './SearchBar'
 import './metronome.css'
 
 import Sidestick from '../../assets/Click.wav'
@@ -22,7 +22,7 @@ const Metronome = ({showSongs, setShowSongs}) => {
     const [soundEffect, setSoundEffect] = useState('sidestick')
     const [debouncedBpm, setDebouncedBpm] = useState(bpm)
     const [dropdownOpen, setDropdownOpen] = useState(false)
-    const [searchTerm, setSearchTerm] = useState('Search')
+    // const [searchTerm, setSearchTerm] = useState('Search')
     const [listSize, setListSize] = useState(25)
 
 
@@ -113,9 +113,9 @@ const Metronome = ({showSongs, setShowSongs}) => {
     //   setShowListSizeSelector(bool)
     // }
 
-    const handleSearch = (searchTerm) => {
-      console.log(searchTerm)
-    }
+    // const handleSearch = (searchTerm) => {
+    //   console.log(searchTerm)
+    // }
 
     const increment = () => {
       setBpm(Number(bpm) + 1)
@@ -146,11 +146,11 @@ const Metronome = ({showSongs, setShowSongs}) => {
               <div className="outer"></div>
               <div className="inner"></div>
             </div>
-            <SearchBar 
+            {/* <SearchBar 
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
               handleSearch={handleSearch}
-              />
+              /> */}
             <div className='metro-dropdown-header' onClick={e => setDropdownOpen(!dropdownOpen)}>{soundEffect}
               <Dropdown 
                 open={dropdownOpen}
@@ -164,7 +164,7 @@ const Metronome = ({showSongs, setShowSongs}) => {
               <SongList 
                 bpm={debouncedBpm}
                 showSongs={showSongs}
-                searchTerm={searchTerm}
+                // searchTerm={searchTerm}
                 listSize={listSize}
                 setListSize={setListSize}
               />

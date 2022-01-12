@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {BrowserRouter} from 'react-router-dom'
 import Metronome from './metronome/Metronome'
+// import Songlist from './metronome/SongList'
 
 import './style.css'
 
@@ -29,18 +30,18 @@ function App() {
     function scrollIntoView(e) {
         const element = document.getElementById(e.target.attributes.linked.value)
         console.log(element)
-        element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"})
+        element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
     }
 
     return (
         <div className='main-container'>
             <BrowserRouter>
             <nav className='navbar'>
-                <img alt=''/>
+                {/* <img alt=''/> */}
                 <div className='navbar logo'>Phil De Hovre</div>
                 <div onClick={scrollIntoView} className='navbar button' linked='hero-there'>Home</div>
                 <div onClick={scrollIntoView} className='navbar button'linked='metro-there'>Projects</div>
-                <div onClick={scrollIntoView} className='navbar button'linked=''>Contact</div>
+                <div onClick={scrollIntoView} className='navbar button'linked='contact-there'>Contact</div>
                 <div onClick={scrollIntoView} className='navbar button' linked='about-there'>About</div>
             </nav>
             <div className='hero' id='hero-there'>
@@ -67,11 +68,11 @@ function App() {
                 <div className='about-right'>
                     <h1>Skillset</h1>
                     <ul>
-                        <li>Javascript</li>
-                        <li>Javascript</li>
-                        <li>Javascript</li>
-                        <li>Javascript</li>
-                        <li>Javascript</li>
+                        <li>Javascript ES6</li>
+                        <li>React</li>
+                        <li>Redux</li>
+                        <li>Node.JS/Express</li>
+                        <li>Data Structures and Algorithms</li>
                     </ul>
                 </div>
             </div>
@@ -83,6 +84,12 @@ function App() {
                     <Metronome showSongs={showSongs} setShowSongs={setShowSongs}/>
                 </div>
             </div>
+            <div className="contact-container" id="contact-there">
+                <div>Telephone: +44 (0)7907318221</div>
+                <div>Email: ph.dehovre@gmail.com</div>
+                <div>github: https://github.com/phildehovre/</div>
+            </div>
+            <div className='copyright'>copyright Philippe De Hovre 2022</div>
             </BrowserRouter>
         </div>
     )
