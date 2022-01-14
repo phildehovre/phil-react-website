@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import {BrowserRouter} from 'react-router-dom'
 import Metronome from './metronome/Metronome'
-// import Songlist from './metronome/SongList'
 
 import './style.css'
 
@@ -76,14 +75,19 @@ function App() {
                     </ul>
                 </div>
             </div>
-            <div className='metro-container'>
+
+            {/* <div className='metro-container'>
                 <div className='metro-left'>
                     {renderDescription()}
                 </div>
                 <div className={`metro-right ${showSongs? `showsongs`: ``}`}>
                     <Metronome showSongs={showSongs} setShowSongs={setShowSongs}/>
                 </div>
+            </div> */}
+            <div className='metro-container'>
+                <Metronome showSongs={showSongs} setShowSongs={setShowSongs} renderDescription={renderDescription}/>
             </div>
+
             <div className="contact-container" id="contact-there">
                 <div>Telephone: +44 (0)7907318221</div>
                 <div>Email: ph.dehovre@gmail.com</div>

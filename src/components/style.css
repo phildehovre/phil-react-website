@@ -124,7 +124,6 @@ html, body {
     padding: 2em;
     line-height: 1.5em;
     height: 100%;
-    /* width: 100% */
 }
 
 .about-left {
@@ -133,6 +132,11 @@ html, body {
 
 .about-right {
     background-color: var(--ternary);
+}
+
+.about-right li {
+    font-size: 1.5em;
+    padding-bottom: 1.5em
 }
 
 .metro-container {
@@ -180,6 +184,14 @@ html, body {
         padding-bottom: 1em;
     }
     
+    .about-left, .about-right {
+        padding: 5em;
+        border-radius: 16px;
+    }
+
+    .about-left h1, .about-right h1 {
+        text-align: center;
+    }
     .metro-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -193,29 +205,20 @@ html, body {
         letter-spacing: 0.06em
     }
     
-    .about-left, .about-right {
-        padding: 5em;
-        border-radius: 16px;
-    }
-
-    .about-left h1, .about-right h1 {
-        text-align: center;
-    }
 
     .metro-left {
-        /* text-align: justify; */
-        padding: 6em;
+        /* padding: 4em; */
         line-height: 1.5em;
         height: 100%;
-        /* background-color: var(--ternary); */
         border-radius: 16px;
-        color: var(--primary-)
+        color: var(--primary-);
+        /* border: 1px solid red */
     }
 
-    .metro-left h1 {
+    /* .metro-left h1 {
         text-align: center;
         text-transform: uppercase;
-    }
+    } */
 
     .contact-container {
         /* border: 1px solid red; */

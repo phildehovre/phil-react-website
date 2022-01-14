@@ -23,7 +23,7 @@ const Metronome = ({showSongs, setShowSongs}) => {
     const [debouncedBpm, setDebouncedBpm] = useState(bpm)
     const [dropdownOpen, setDropdownOpen] = useState(false)
     // const [searchTerm, setSearchTerm] = useState('Search')
-    const [listSize, setListSize] = useState(25)
+    const [listSize, setListSize] = useState(10)
 
 
     const [cowbell] = useSound(Cowbell)
@@ -114,7 +114,7 @@ const Metronome = ({showSongs, setShowSongs}) => {
     // }
 
     // const handleSearch = (searchTerm) => {
-    //   console.log(searchTerm)
+      //   console.log(searchTerm)
     // }
 
     const increment = () => {
@@ -126,52 +126,59 @@ const Metronome = ({showSongs, setShowSongs}) => {
 
 
     return (
-        <div className='metronome'>
-            <h1>Metronome</h1>
-            <div className="metro-display">
-                <div className="metro-btn decrement" onClick={decrement}>-</div>
-                <div className='metro-display bpm'>{bpm}</div>
-                <div  className="metro-btn increment" onClick={increment}>+</div>
-            </div>
-            <input type="range" min="40" max="220" value={bpm} onChange={e =>setBpm(e.target.value)}/>
-            <div className="metro-controls">
-                    <div onClick={startClick} className={`metro-btn ${play? `pause`: `play`} noSelect`} id='metro-there'></div>
-            <div 
-              className="metro-btn-generate"
-              onClick={e => generateSongs()} 
-              >
-              </div>
+          <>
+          <div className="metro-right">
+            <div className='metronome'>
+                <h1>Metronome</h1>
+                <div className="metro-display">
+                    <div className="metro-btn decrement" onClick={decrement}>-</div>
+                    <div className='metro-display bpm'>{bpm}</div>
+                    <div  className="metro-btn increment" onClick={increment}>+</div>
+                </div>
+                <input type="range" min="40" max="220" value={bpm} onChange={e =>setBpm(e.target.value)}/>
+                <div className="metro-controls">
+                        <div onClick={startClick} className={`metro-btn ${play? `pause`: `play`} noSelect`} id='metro-there'></div>
+                <div 
+                  className="metro-btn-generate"
+                  onClick={e => generateSongs()} 
+                  >
+                  </div>
 
-            <div onClick={tapTempo} className="metro-btn-tap">
-              <div className="outer"></div>
-              <div className="inner"></div>
+                <div onClick={tapTempo} className="metro-btn-tap">
+                  <div className="outer"></div>
+                  <div className="inner"></div>
+                </div>
+                {/* <SearchBar 
+                  searchTerm={searchTerm}
+                  setSearchTerm={setSearchTerm}
+                  handleSearch={handleSearch}
+                  /> */}
+                <div className='metro-dropdown-header' onClick={e => setDropdownOpen(!dropdownOpen)}>{soundEffect}
+                  <Dropdown 
+                    open={dropdownOpen}
+                    soundEffect={soundEffect}
+                    setSoundEffect={setSoundEffect}
+                    dropdownOpen={dropdownOpen}
+                    setDropdownOpen={setDropdownOpen}
+                    />
+                </div>
+                </div>
+
+                  {/* <input type='range' min='0' max='50' onChange={e => setListSize(e.target.value)}/> */}
+                  {/* <div>{listSize}</div> */}
+                  <h6 style={{color: 'var(--secondary)'}}>Powered by GetSongBpm.com</h6>
             </div>
-            {/* <SearchBar 
-              searchTerm={searchTerm}
-              setSearchTerm={setSearchTerm}
-              handleSearch={handleSearch}
-              /> */}
-            <div className='metro-dropdown-header' onClick={e => setDropdownOpen(!dropdownOpen)}>{soundEffect}
-              <Dropdown 
-                open={dropdownOpen}
-                soundEffect={soundEffect}
-                setSoundEffect={setSoundEffect}
-                dropdownOpen={dropdownOpen}
-                setDropdownOpen={setDropdownOpen}
-                />
-            </div>
-            </div>
-              <SongList 
-                bpm={debouncedBpm}
-                showSongs={showSongs}
-                // searchTerm={searchTerm}
-                listSize={listSize}
-                setListSize={setListSize}
-              />
-              <input type='range' min='0' max='50' onChange={e => setListSize(e.target.value)}/>
-              <div>{listSize}</div>
-              <h6 style={{color: 'var(--secondary)'}}>Powered by GetSongBpm.com</h6>
-        </div>
+          </div>
+          <div className="metro-left">
+            <SongList 
+              bpm={debouncedBpm}
+              showSongs={showSongs}
+              // searchTerm={searchTerm}
+              listSize={listSize}
+              setListSize={setListSize}
+            />
+          </div>
+     </>
     )
 }
 

@@ -360,7 +360,7 @@ input[type=range] {
     transform: scale(1.05);
   }
 
-  .listsize.closed {
+  /* .listsize.closed {
     display: none;
     transition: ease-in 250ms;
     opacity: 0%;
@@ -368,10 +368,9 @@ input[type=range] {
     background-color: var(--secondary);
     z-index: -10;
     transition: ease-in 250ms;
-    /* transform: translateY(-100%) */
-  }
+  } */
   
-  .listsize.open {
+  /* .listsize.open {
     position: absolute;
     background-color: var(--secondary);
     z-index: -10;
@@ -380,7 +379,7 @@ input[type=range] {
     top: calc(90%);
     border-radius: 0 0 26px 26px;
     transform: translateY(5%)
-  }
+  } */
   
   
 .pause {
@@ -464,7 +463,46 @@ input[type=range] {
 
 /* ==========================Song list styling =================================== */
 
-.metro-songlist.closed {
+.songcard {
+  width: content;
+  height: fit-content;
+  margin-bottom: 0.2em;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--ternary);
+  border-radius: 16px;
+  color: black;
+  transition: ease-in 250ms
+}
+
+.songcard:hover {
+  background-color: white;
+}
+
+
+.songcard-left {
+  display: flex;
+  align-items: center;
+}
+
+.songcard-left i {
+  padding: .2em;
+  font-size:2em;
+  color: var(--primary)
+}
+/* .songcard-left i:hover {
+ color: white;
+} */
+
+
+
+.songcard-artist {
+  font-size: .75em
+}
+
+/* .metro-songlist.closed {
   transition: ease-in 250ms;
   transform: translateX(-500%)
 }
@@ -476,7 +514,6 @@ input[type=range] {
   transform: translateX(0%);
   transition: ease 450ms;
   border-radius: 26px;
-  /* background-color: var(--secondary); */
   width: 60vw;
   z-index: -99;
 }
@@ -500,7 +537,7 @@ input[type=range] {
   padding: .3em;
   border: none;
   height: 2em;
-}
+} */
 
 .metro-songlist .details {
   width: 1%;
@@ -516,5 +553,19 @@ input[type=range] {
 
 .metro-songlist .index {
   width: 0.2%;
+}
+
+.songlist-nav-ctn {
+  display: flex;
+  justify-content: center;
+}
+
+.songlist-nav-btn {
+  cursor: pointer;
+  font-size: 2.5em;
+}
+
+.songList-spinner {
+  font-size: 5em;
 }
 

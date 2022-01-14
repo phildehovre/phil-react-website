@@ -1,103 +1,103 @@
-import React from 'react'
 
 import axios from 'axios'
 
 import {useEffect, useState} from 'react'
-// import SongListHeader from './SongListHeader'
 
+import SongCard from './SongCard'
 
 function SongList(props) {
 
-    const BPM_API_KEY = '59d26b50dd52ee5de04287f8a5837b8f'
-    const { bpm, showSongs, listSize} = props
+const BPM_API_KEY = '59d26b50dd52ee5de04287f8a5837b8f'
+const { bpm, showSongs} = props
 
  const [songs, setSongs] = useState([])
  const [rawList, setRawList] = useState([])
+ const [listStart, setListStart] = useState(0)
+ const [listEnd, setListEnd] = useState(10)
+ const [pageCounter, setPageCounter] = useState(1)
+ const [songListIsLoading, setSongListIsLoading] = useState(false)
+
 
 
  useEffect(() => {
      (async () => {
          const KEY = BPM_API_KEY
+         setSongListIsLoading(true)
          const res = await axios.get(`https://api.getsongbpm.com/tempo/?api_key=${KEY}&bpm=${bpm}`)
          if (res) {
-           setRawList(res.data.tempo)
-         } else {
+             setSongListIsLoading(false)
+             setRawList(res.data.tempo)
+             console.log('fetching')
+        } else {
            console.log('error')
          }
+         console.log(songListIsLoading)
         })()
       }, [bpm])
       
       
       useEffect(() => {
-        setSongs(rawList.slice(0, listSize))
-      }, [rawList, listSize])
+        setSongs(rawList.slice(listStart, listEnd))
+      }, [rawList, listStart, listEnd])
+
     
-
-    const renderSongList = () => {
-      if (songs.length === 0 && showSongs) {
+const renderSongListWithNav = () => {
+    if(songListIsLoading) {
+        return <div className='songlist-spinner fas fa-spinner'></div>
+    }
+    if (songs && showSongs) {
         return (
-          <div className="metro-songlist-loader"></div>
-          )}
-          if (songs.length > 0 && showSongs) {
-            return (      
-              <table>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Title</th>
-                  <th>Artist </th>
-                  <th>Album</th>
-                  <th>Year</th>
-                  <th>Genres</th>
-                </tr>
-              </thead>
-              <tbody>
-                {renderTable()}
-              </tbody>
-              </table>
-          )
-        }
-      }
-      
-      const renderTable = () => {
-        return songs.map((song, i) => {
-          i = i +1
-          const renderGenres = () => {
-            if (song.artist.genres !== null) {
-              return song.artist.genres[0]+', '+song.artist.genres[1]
-            }
-            return 'undefined'
-          }
+            <>
+                {renderSongList()}
+                    <div className='songlist-nav-ctn'>
+                    <div className='songlist-nav-btn fas fa-chevron-left' onClick={handleNavClick} keyword='Prev'></div>
+                        <div>Page {pageCounter}</div>                    
+                    <div className='songlist-nav-btn fas fa-chevron-right' onClick={handleNavClick} Keyword='Next'></div>
+                </div>
+            </>
+        )
+    }
+}
 
-        const checkLength = (word) => {
-          if (word.length > 20) {
-            return word.slice(0, 20)+'...'
-          }
-          return word
-        }
-
+const renderSongList = () => {
+    if (!showSongs) {
+        return (<>{props.renderDescription}</>)
+    }
+    return (
+            songs.map(song => {
             return (
-              <tr key={song.song_id}>
-              <td className='index'>{i}</td>
-                <td className='details'>{checkLength(song.song_title)}</td>
-                <td className='details'>{checkLength(song.artist.name)}</td>
-                <td className='details'>{checkLength(song.album.title)}</td>
-                <td className='details'>{song.album.year}</td>
-                <td className='details genres'>{renderGenres()}</td>
-              </tr>
+                <SongCard song={song}/>
             )
-          })
+        })
+        )
+}
+
+const handleNavClick = (e) => {
+    if(e.target.attributes.keyword.value === 'Prev') {
+        if (listStart > 0) {
+            setListStart(listStart-10)
+            setListEnd(listEnd-10)
+            if (pageCounter !== 1) {
+                setPageCounter(pageCounter-1)
+            }
         }
+    }
+    if(e.target.attributes.keyword.value === 'Next') {
+        if (listEnd < 250) {
+            setListStart(listStart+10)
+            setListEnd(listEnd+10)
+            setPageCounter(pageCounter+1)
+        }
+        }
+    }
 
-
-      return (
+    return (
         <>
-          <div className={`metro-songlist ${showSongs?'open':'closed' }`}>
-              {renderSongList()}
-          </div>
-        
+            <div className={`metro-songlist ${showSongs?'open':'closed' }`}>
+                {renderSongListWithNav()}
+            </div>
         </>
     )
-  }
-  
-  export default SongList
+}
+
+export default SongList
