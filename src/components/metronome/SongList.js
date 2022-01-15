@@ -29,11 +29,9 @@ const { bpm, showSongs} = props
              setRawList(res.data.tempo)
              console.log('fetching')
         } else {
-           console.log('error')
          }
-         console.log(songListIsLoading)
         })()
-      }, [bpm])
+      }, [bpm, songListIsLoading])
       
       
       useEffect(() => {
