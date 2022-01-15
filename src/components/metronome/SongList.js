@@ -31,7 +31,7 @@ const { bpm, showSongs} = props
         } else {
          }
         })()
-      }, [bpm, songListIsLoading])
+      }, [bpm])
       
       
       useEffect(() => {
@@ -56,7 +56,7 @@ const { bpm, showSongs} = props
     }
     
 const renderSongListWithNav = () => {
-    if(songListIsLoading) {
+    if (songListIsLoading) {
         return <div className='songlist-spinner fas fa-spinner'></div>
     }
     if (songs && showSongs) {
@@ -74,9 +74,7 @@ const renderSongListWithNav = () => {
 }
 
 const renderSongList = () => {
-    if (!showSongs) {
-        return (<>{props.renderDescription}</>)
-    }
+    console.log(songs)
     return (
             songs.map(song => {
             return (
