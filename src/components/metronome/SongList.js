@@ -16,8 +16,13 @@ const { bpm, showSongs} = props
  const [listEnd, setListEnd] = useState(10)
  const [pageCounter, setPageCounter] = useState(1)
  const [songListIsLoading, setSongListIsLoading] = useState(false)
+ const [prevRawList, setPrevRawList] = useState([])
 
+console.log(window.SERVER_DATA)
 
+useEffect(() => {
+    setPrevRawList(rawList)
+}, [rawList])
 
  useEffect(() => {
      (async () => {
@@ -25,10 +30,11 @@ const { bpm, showSongs} = props
          setSongListIsLoading(true)
          const res = await axios.get(`https://api.getsongbpm.com/tempo/?api_key=${KEY}&bpm=${bpm}`)
          if (res) {
+             console.log(res)
              setSongListIsLoading(false)
              setRawList(res.data.tempo)
-             console.log('fetching')
         } else {
+            console.log(res.statusText)
          }
         })()
       }, [bpm])
@@ -56,7 +62,7 @@ const { bpm, showSongs} = props
     }
     
 const renderSongListWithNav = () => {
-    if (songListIsLoading) {
+    if (songListIsLoading && prevRawList !== rawList) {
         return <div className='songlist-spinner fas fa-spinner'></div>
     }
     if (songs && showSongs) {
@@ -66,7 +72,7 @@ const renderSongListWithNav = () => {
                     <div className='songlist-nav-ctn'>
                     <div className='songlist-nav-btn fas fa-chevron-left' onClick={handleNavClick} keyword='Prev'></div>
                         <div>Page {pageCounter}</div>                    
-                    <div className='songlist-nav-btn fas fa-chevron-right' onClick={handleNavClick} Keyword='Next'></div>
+                    <div className='songlist-nav-btn fas fa-chevron-right' onClick={handleNavClick} keyword='Next'></div>
                 </div>
             </>
         )
@@ -74,7 +80,6 @@ const renderSongListWithNav = () => {
 }
 
 const renderSongList = () => {
-    console.log(songs)
     return (
             songs.map(song => {
             return (
