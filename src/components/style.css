@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+*, *:before, *:after {
+    box-sizing: border-box;
+    --test-border: 1px solid black;
+    --primary-: #81A1BC;
+    --secondary: #ABC0D2;
+    --ternary: #D5E0E9;
+    --primary-overlay: rgba(129, 161, 188, 0.75)
+}
+
+:root {
+    font-family: 'roboto', sans-serif;
+    letter-spacing: .15em;
+    /* display: flex; */
+}
+
+html, body {
+    margin: 0; 
+    padding: 0;
+  }
+
+.main-container {
+    display: grid;
+    width: 100vw;
+}
+
+.navbar {
+    background-color: white;
+    width: 100vw;
+    display: flex;
+    text-align: center;
+    font-size: 1em;
+    height: 60px;
+    position: fixed;
+    /* box-shadow: 20px 2px 20px #b1b1b1; */
+    z-index: 99;
+    
+}
+
+.navbar.logo {
+    position: relative;
+    align-items: center;
+    justify-content: center;;
+    font-size: 2em;
+    text-transform: uppercase;
+    padding: .1em;
+    font-weight: bold;
+}
+
+.navbar.button {
+    position: relative;
+    text-decoration: none;
+    padding: 1em;
+    color: rgb(97, 97, 97);
+    text-align: center;
+    cursor: pointer
+}
+
+.hero {
+    display: flex;
+    height: 100vh;
+    background-color: var(--primary-overlay);
+    background-image: url('../assets/josiah-gardner-ksi5l4iJBjM-unsplash.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+    background-attachment: fixed ;
+    width: 110%;
+    align-items: center;
+}
+
+
+
+.headline-container {
+    padding: 4em;
+    font-size: 1.5em;;
+}
+
+.headline-subtitle {
+    font-size: 0.8em;
+    margin-bottom: -2em;
+}
+
+.headline-cta {
+    color: white;
+    display: flex;
+    background-color: #EB5757;
+    border-radius: 2em;
+    padding: 0em 1.5em;
+    font-size: 0.75em;
+    justify-content: center;
+    align-items: center;
+    width: 15em;
+    height: 3em;
+    cursor: pointer;
+    text-align: center;
+}
+
+.headline-cta-logo {
+    top: .5em;
+    height: 1.5em;
+    width: 1.5em;
+    color: white;
+    background-image: url('../assets/magnifyingglass.png');
+    background-repeat: no-repeat;
+    background-size: 80%;
+    /* border: var(--test-border) */
+}
+
+.headline-cta h2 {
+    /* border: 1px solid red; */
+    height: 100%;
+    width: 100%;
+    padding: .2em
+}
+
+.about-container {
+    letter-spacing: .060em;
+    width: 110%;
+    height: 100vh;
+}
+
+.about-left, .about-right {
+    padding: 2em;
+    line-height: 1.5em;
+    height: 100%;
+}
+
+.about-left {
+    background-color: var(--primary-);
+}
+
+.about-right {
+    background-color: var(--ternary);
+}
+
+.about-right li {
+    font-size: 1.5em;
+    padding-bottom: 1.5em
+}
+
+.metro-container {
+    height: 100%;
+    width: 100%;
+    margin-top: 3em;
+}
+
+
+
+@media (min-width: 750px) {
+
+    html, body {
+        width: 100vw
+    }
+
+    .main-container {
+        width: 100vw;
+    }
+
+    .hero {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        background: url('../assets/hero.jpg') no-repeat center left/cover;
+        background-attachment: fixed ;
+        width: 99vw
+    }
+    
+    .headline-container {
+        font-size: 1.75em;
+    }
+    
+    .about-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1em;
+        padding: 2em;
+        justify-content: center;
+        text-align: justify;
+        width: 99vw;
+    }
+    
+    .about-container h1 {
+        border-bottom: 1px solid white;
+        padding-bottom: 1em;
+    }
+    
+    .about-left, .about-right {
+        padding: 5em;
+        border-radius: 16px;
+    }
+
+    .about-left h1, .about-right h1 {
+        text-align: center;
+    }
+    .metro-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        grid-template-rows: minmax(200px, 700px);;
+        gap: 1em;
+        padding: 2em;
+        /* text-align: justify; */
+        letter-spacing: 0.06em
+    }
+    
+
+    .metro-left {
+        /* padding: 4em; */
+        line-height: 1.5em;
+        height: 100%;
+        border-radius: 16px;
+        color: var(--primary-);
+        /* border: 1px solid red */
+    }
+
+    /* .metro-left h1 {
+        text-align: center;
+        text-transform: uppercase;
+    } */
+
+    .contact-container {
+        /* border: 1px solid red; */
+        background-color: var(--secondary);
+        height: 50vh;
+        width: 100vw;
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 2em
+    }
+}
